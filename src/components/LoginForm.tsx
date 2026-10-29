@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
   FieldError,
@@ -26,6 +27,7 @@ const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      rememberMe: false,
     },
     mode: "onSubmit",
   });
@@ -103,6 +105,27 @@ const LoginForm = () => {
               </div>
 
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        {/* Remember Me */}
+        <Controller
+          name="rememberMe"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field orientation="horizontal" data-invalid={fieldState.invalid}>
+              <Checkbox
+                id={field.name}
+                name={field.name}
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                aria-invalid={fieldState.invalid}
+              />
+
+              <FieldLabel htmlFor={field.name} className="font-normal">
+                Remember me
+              </FieldLabel>
             </Field>
           )}
         />

@@ -28,6 +28,7 @@ export const loginSchema = z.object({
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/, {
       message: "Must include uppercase, lowercase, number, and special char",
     }),
+  rememberMe: z.boolean(),
 });
 
 export type LoginType = z.infer<typeof loginSchema>;

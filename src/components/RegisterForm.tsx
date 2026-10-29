@@ -74,42 +74,6 @@ const RegisterForm = () => {
           )}
         />
 
-        {/* Password */}
-        <Controller
-          name="password"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor={field.name}>Password</FieldLabel>
-
-              <div className="relative">
-                <Input
-                  {...field}
-                  id={field.name}
-                  type={showPassword ? "text" : "password"}
-                  className="pr-9"
-                  aria-invalid={fieldState.invalid}
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="text-muted-foreground hover:text-foreground focus-visible:text-foreground absolute inset-y-0 right-0 flex w-9 items-center justify-center outline-none"
-                >
-                  {showPassword ? (
-                    <EyeOff className="size-4" />
-                  ) : (
-                    <Eye className="size-4" />
-                  )}
-                </button>
-              </div>
-
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
-
         {/* Email */}
         <Controller
           name="email"
@@ -145,6 +109,42 @@ const RegisterForm = () => {
                 inputMode="numeric"
                 aria-invalid={fieldState.invalid}
               />
+
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        {/* Password */}
+        <Controller
+          name="password"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor={field.name}>Password</FieldLabel>
+
+              <div className="relative">
+                <Input
+                  {...field}
+                  id={field.name}
+                  type={showPassword ? "text" : "password"}
+                  className="pr-9"
+                  aria-invalid={fieldState.invalid}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="text-muted-foreground hover:text-foreground focus-visible:text-foreground absolute inset-y-0 right-0 flex w-9 items-center justify-center outline-none"
+                >
+                  {showPassword ? (
+                    <EyeOff className="size-4" />
+                  ) : (
+                    <Eye className="size-4" />
+                  )}
+                </button>
+              </div>
 
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
